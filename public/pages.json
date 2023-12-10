@@ -1,0 +1,8 @@
+[{
+    "title" : "Home",
+    "link": {"text": "Home", "url": "home"}
+}, 
+{
+    "title" : "About",
+    "link": {"text": "About", "url": "about"}
+}]

@@ -1,40 +1,55 @@
 <template>
-    <navbar 
-        :pages="pages" 
-        :active-page="activePage"
-        :nav-link-click="(index) => activePage = index"
-    ></navbar>
-    <div class="container max-w-screen-lg mx-auto px-4">
-        <div class="border-b border-gray-200 py-4">
-            <h1 class="text-xl font-semibold">{{ pages[activePage].title }}</h1>
-        </div>
+    <div 
+        :class="theme">
+        <navbar 
+            v-if="pages.length > 0"
+            :pages="pages" 
+            :active-page="activePage"
+            :change-theme="changeTheme"
+            :nav-link-click="(index) => activePage = index"
+        ></navbar>
+        <page-content 
+            v-if="pages.length > 0"
+            :page="pages[activePage]"
+        ></page-content>
     </div>
 </template>
 
 <script>
-
+import PageContent from './components/PageContent.vue';
 import Navbar from './components/Navbar.vue';
 
 export default{
     components: {
         Navbar,
+        PageContent,
+    },
+    created() {
+        this.getPages()
     },
     data() {
         return{
             activePage: 0,
-            pages: [
-                {
-                    title : 'Home',
-                    link: {text: 'Home', url: 'home'}
-                }, 
-                {
-                    title : 'About',
-                    link: {text: 'About', url: 'about'}
-                }, 
-            ]
+            theme: 'dark',
+            pages: []
+        }
+    },
+    methods: {
+        async getPages(){
+            let res = await fetch('../public/pages.json');
+            let data = await res.json();
+
+            this.pages = data;
+        },
+        changeTheme(){
+            let theme = 'light';
+
+            if(this.theme == 'light'){
+                theme = 'dark'
+            }
+            this.theme = theme;
         }
     }
 }
-
 </script>
 
