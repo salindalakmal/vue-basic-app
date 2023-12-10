@@ -36,7 +36,7 @@ export default{
     },
     methods: {
         async getPages(){
-            let res = await fetch('../public/pages.json');
+            let res = await fetch('/pages.json');
             let data = await res.json();
 
             this.pages = data;
