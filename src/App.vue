@@ -3,7 +3,7 @@
         :class="theme">
         <navbar 
             v-if="pages.length > 0"
-            :pages="pages" 
+            :pages="publishedPages" 
             :active-page="activePage"
             :change-theme="changeTheme"
             :nav-link-click="(index) => activePage = index"
@@ -12,20 +12,31 @@
             v-if="pages.length > 0"
             :page="pages[activePage]"
         ></page-content>
+        <create-page
+            :page-create="pageCreate"
+        ></create-page>
     </div>
 </template>
 
 <script>
 import PageContent from './components/PageContent.vue';
 import Navbar from './components/Navbar.vue';
+import CreatePage from './components/CreatePage.vue';
 
 export default{
     components: {
         Navbar,
         PageContent,
+        CreatePage,
     },
     created() {
+        this.getThemeSetting()
         this.getPages()
+    },
+    computed: {
+        publishedPages(){
+            return this.pages.filter(p => p.published);
+        }
     },
     data() {
         return{
@@ -34,7 +45,7 @@ export default{
             pages: []
         }
     },
-    methods: {
+    methods: { 
         async getPages(){
             let res = await fetch('/pages.json');
             let data = await res.json();
@@ -48,6 +59,21 @@ export default{
                 theme = 'dark'
             }
             this.theme = theme;
+            this.storeThemeSetting();
+        },
+        pageCreate(pageObj){
+            console.log(pageObj);
+            this.pages.push(pageObj);
+        },
+        storeThemeSetting(){
+            localStorage.setItem('theme', this.theme);
+        },
+        getThemeSetting(){
+            let theme = localStorage.getItem('theme');
+
+            if(theme){
+                this.theme = theme;
+            }
         }
     }
 }

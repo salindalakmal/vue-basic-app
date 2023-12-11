@@ -1,8 +1,10 @@
 [{
     "title" : "Home",
-    "link": {"text": "Home", "url": "home"}
+    "link": {"text": "Home", "url": "home"},
+    "published": true
 }, 
 {
     "title" : "About",
-    "link": {"text": "About", "url": "about"}
+    "link": {"text": "About", "url": "about"},
+    "published": true
 }]
