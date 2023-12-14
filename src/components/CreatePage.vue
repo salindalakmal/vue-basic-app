@@ -71,6 +71,11 @@ export default{
                 },
                 published: this.published
             })
+
+            this.pageTitle = '';
+            this.linkText = '';
+            this.linkUrl = '';
+            this.published = true
         }
     },
     watch:{
