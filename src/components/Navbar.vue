@@ -11,14 +11,14 @@
                             <button 
                                 type="button" 
                                 class="block bg-blue-900 rounded-full text-white text-sm py-2 px-3 mr-2" 
-                                @click.prevent="changeTheme()"
+                                @click.prevent="$emit('changeTheme')"
                             >Toggle Theme</button>
                         </li>
                         <li v-for="(page, index) in pages" :key="index">
                             <nav-link 
                                 :page="page"
                                 :isActive="activePage == index"
-                                @click.prevent="navLinkClick(index)"
+                                @click.prevent="$emit('navLinkClick', index)"
                             ></nav-link>
                         </li>
                     </ul>
@@ -32,7 +32,7 @@
 import NavLink from './NavLink.vue';
 
 export default {
-    props: ['changeTheme', 'pages', 'activePage', 'navLinkClick'],
+    props: ['changeTheme', 'pages', 'activePage'],
     components:{
         NavLink
     },

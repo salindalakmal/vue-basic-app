@@ -43,7 +43,23 @@
 </template>
 <script>
 export default{
-    props: ['pageCreate'],
+    //emits: ['pageCreate'],
+    emits: {
+        // pageCreate(pageObj){
+            // if(!pageObj.pageTitle){
+            //     return false;
+            // }
+        // }
+        pageCreate({title, link, published}){
+            if(!title){
+                return false;
+            }
+            if(!link || !link.text || !link.url){
+                return false;
+            }
+            return true;
+        }
+    },
     computed: {
         isFormInvalid(){
             return !this.pageTitle || !this.linkText || !this.linkUrl;
@@ -63,14 +79,15 @@ export default{
                 alert('Please fill in the form');
                 return;
             }
-            this.pageCreate({
+
+            this.$emit('pageCreate', {
                 title: this.pageTitle,
                 link:{
                     text: this.linkText,
                     url: this.linkUrl
                 },
                 published: this.published
-            })
+            });
 
             this.pageTitle = '';
             this.linkText = '';

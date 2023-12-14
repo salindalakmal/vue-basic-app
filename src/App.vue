@@ -5,15 +5,15 @@
             v-if="pages.length > 0"
             :pages="publishedPages" 
             :active-page="activePage"
-            :change-theme="changeTheme"
-            :nav-link-click="(index) => activePage = index"
+            @change-theme="changeTheme"
+            @nav-link-click="(index) => activePage = index"
         ></navbar>
         <page-content 
             v-if="pages.length > 0"
             :page="pages[activePage]"
         ></page-content>
         <create-page
-            :page-create="pageCreate"
+            @page-create="pageCreate"
         ></create-page>
     </div>
 </template>
@@ -62,7 +62,7 @@ export default{
             this.storeThemeSetting();
         },
         pageCreate(pageObj){
-            console.log(pageObj);
+            // console.log(pageObj);
             this.pages.push(pageObj);
         },
         storeThemeSetting(){
