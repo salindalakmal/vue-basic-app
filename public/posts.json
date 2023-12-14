@@ -1,0 +1,10 @@
+[{
+    "title" : "Post 1",
+    "link": {"text": "Post 1", "url": "post-1"},
+    "published": true
+}, 
+{
+    "title" : "Post 2",
+    "link": {"text": "Post 2", "url": "post-2"},
+    "published": true
+}]

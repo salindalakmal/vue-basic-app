@@ -2,10 +2,10 @@
     <div class="container max-w-screen-lg mx-auto px-4 py-8">
         <form>
             <div class="mb-4">
-                <label class="block mb-1">Page Title</label>
+                <label class="block mb-1">Title</label>
                 <input 
                     type="text" 
-                    v-model="pageTitle"
+                    v-model="postTitle"
                 >
             </div>
             <div class="mb-4">
@@ -43,14 +43,14 @@
 </template>
 <script>
 export default{
-    //emits: ['pageCreate'],
+    emits: ['postCreate'],
     emits: {
-        // pageCreate(pageObj){
-            // if(!pageObj.pageTitle){
-            //     return false;
-            // }
+        // postCreate(postObj){
+        //     if(!postObj.postTitle){
+        //         return false;
+        //     }
         // }
-        pageCreate({title, link, published}){
+        postCreate({title, link, published}){
             if(!title){
                 return false;
             }
@@ -62,12 +62,12 @@ export default{
     },
     computed: {
         isFormInvalid(){
-            return !this.pageTitle || !this.linkText || !this.linkUrl;
+            return !this.postTitle || !this.linkText || !this.linkUrl;
         }
     },
     data(){
         return{
-            'pageTitle': '',
+            'postTitle': '',
             'linkText': '',
             'linkUrl': '',
             'published': true
@@ -75,13 +75,13 @@ export default{
     },
     methods: {
         submitForm(){
-            if(!this.pageTitle || !this.linkText || !this.linkUrl){
+            if(!this.postTitle || !this.linkText || !this.linkUrl){
                 alert('Please fill in the form');
                 return;
             }
 
-            this.$emit('pageCreate', {
-                title: this.pageTitle,
+            this.$emit('postCreate', {
+                title: this.postTitle,
                 link:{
                     text: this.linkText,
                     url: this.linkUrl
@@ -89,14 +89,14 @@ export default{
                 published: this.published
             });
 
-            this.pageTitle = '';
+            this.postTitle = '';
             this.linkText = '';
             this.linkUrl = '';
             this.published = true
         }
     },
     watch:{
-        pageTitle(newTitle, oldTitle){
+        postTitle(newTitle, oldTitle){
             if(this.linkText == oldTitle){
                 this.linkText = newTitle
             } 

@@ -14,12 +14,21 @@
                                 @click.prevent="$emit('changeTheme')"
                             >Toggle Theme</button>
                         </li>
-                        <nav-link 
+                        <li>    
+                            <router-link to="/">Home</router-link>
+                        </li>
+                        <li>
+                            <router-link to="/posts">Posts</router-link>
+                        </li>
+                        <li>
+                            <router-link to="/create-post">Create Post</router-link>
+                        </li>
+                        <!-- <nav-link 
                             v-for="(page, index) in pages" :key="index"
                             :page="page"
                             :index="index"
                             :isActive="activePage == index"
-                        ></nav-link>
+                        ></nav-link> -->
                     </ul>
                 </div>
             </div>
@@ -28,12 +37,12 @@
 </template>
 
 <script>
-import NavLink from './NavLink.vue';
+// import NavLink from './PostLinks.vue';
 
 export default {
-    props: ['changeTheme', 'pages', 'activePage'],
-    components:{
-        NavLink
-    },
+    props: ['changeTheme'],
+    // components:{
+    //     PostLinks
+    // },
 }
 </script>
