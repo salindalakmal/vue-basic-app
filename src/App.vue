@@ -6,7 +6,6 @@
             :pages="publishedPages" 
             :active-page="activePage"
             @change-theme="changeTheme"
-            @nav-link-click="(index) => activePage = index"
         ></navbar>
         <page-content 
             v-if="pages.length > 0"
@@ -30,8 +29,13 @@ export default{
         CreatePage,
     },
     created() {
+        
         this.getThemeSetting()
         this.getPages()
+
+        this.$bus.$on('navLinkClick', (index) => {
+            this.activePage = index;
+        })
     },
     computed: {
         publishedPages(){

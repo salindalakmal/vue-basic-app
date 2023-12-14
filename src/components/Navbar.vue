@@ -14,13 +14,12 @@
                                 @click.prevent="$emit('changeTheme')"
                             >Toggle Theme</button>
                         </li>
-                        <li v-for="(page, index) in pages" :key="index">
-                            <nav-link 
-                                :page="page"
-                                :isActive="activePage == index"
-                                @click.prevent="$emit('navLinkClick', index)"
-                            ></nav-link>
-                        </li>
+                        <nav-link 
+                            v-for="(page, index) in pages" :key="index"
+                            :page="page"
+                            :index="index"
+                            :isActive="activePage == index"
+                        ></nav-link>
                     </ul>
                 </div>
             </div>
