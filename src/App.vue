@@ -1,23 +1,24 @@
 <template>
-    <div 
-        :class="theme">
-        <navbar 
-            @change-theme="changeTheme"
-        ></navbar>
+    <div :class="theme">
+        <page-header></page-header>
         <router-view></router-view>
+        <page-footer></page-footer>
     </div>
 </template>
 
 <script>
-import Navbar from './components/Navbar.vue';
+import PageHeader from './components/PageHeader.vue';
+import PageFooter from './components/PageFooter.vue';
 
 export default{
     components: {
-        Navbar,
+        PageHeader,
+        PageFooter
     },
     created() {
-        
         this.getThemeSetting()
+
+        this.$bus.$on('changeTheme', this.changeTheme);
     },
     data() {
         return{

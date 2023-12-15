@@ -1,7 +1,7 @@
 <template>
-    <div class="container max-w-screen-lg mx-auto px-4">
-        <div class="border-b border-gray-200 py-4">
-            <h1 class="text-xl font-semibold">Home</h1>
+    <section class="py-20">
+        <div class="max-w-screen-xl mx-auto px-4 lg:px-5">
+            
         </div>
-    </div>
+    </section>
 </template>

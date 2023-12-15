@@ -1,48 +1,28 @@
 <template>
-    <nav class="bg-gray-200 dark:bg-black">
-        <div class="container max-w-screen-lg mx-auto px-4">
-            <div class="flex">
-                <div class="flex-none">
-                    <h1 class="py-3 px-3 text-white bg-gray-900">SL</h1>
-                </div>
-                <div class="flex-auto flex justify-end">
-                    <ul class="flex items-center">
-                        <li>
-                            <button 
-                                type="button" 
-                                class="block bg-blue-900 rounded-full text-white text-sm py-2 px-3 mr-2" 
-                                @click.prevent="$emit('changeTheme')"
-                            >Toggle Theme</button>
-                        </li>
-                        <li>    
-                            <router-link to="/">Home</router-link>
-                        </li>
-                        <li>
-                            <router-link to="/posts">Posts</router-link>
-                        </li>
-                        <li>
-                            <router-link to="/create-post">Create Post</router-link>
-                        </li>
-                        <!-- <nav-link 
-                            v-for="(page, index) in pages" :key="index"
-                            :page="page"
-                            :index="index"
-                            :isActive="activePage == index"
-                        ></nav-link> -->
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav> 
+    <nav>
+        <ul class="flex flex-col items-center md:flex-row gap-2 md:gap-8">
+            <li class="md:py-1">
+                <router-link to="/" class="text-gray-400 font-semibold text-base hover:text-gray-700 transition duration-200 ease-in-out">Home</router-link>
+            </li>
+            <li class="md:py-1">
+                <router-link to="/posts" class="text-gray-400 font-semibold text-base hover:text-gray-700 transition duration-200 ease-in-out">Posts</router-link>
+            </li>
+            <li class="md:py-1">
+                <router-link to="/create-post" class="text-gray-400 font-semibold text-base hover:text-gray-700 transition duration-200 ease-in-out">Create Post</router-link>
+            </li>
+            <li class="md:py-1">
+                <button
+                    type="button" 
+                    class="text-white font-semibold text-base block py-2 px-4 rounded bg-blue-600  hover:bg-blue-900 transition duration-200 ease-in-out"
+                    @click.prevent="$bus.$emit('changeTheme')"
+                >Toggle Theme</button>
+            </li>
+            <!-- <nav-link 
+                v-for="(page, index) in pages" :key="index"
+                :page="page"
+                :index="index"
+                :isActive="activePage == index"
+            ></nav-link> -->
+        </ul>
+    </nav>
 </template>
-
-<script>
-// import NavLink from './PostLinks.vue';
-
-export default {
-    props: ['changeTheme'],
-    // components:{
-    //     PostLinks
-    // },
-}
-</script>

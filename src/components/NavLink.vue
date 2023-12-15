@@ -10,8 +10,6 @@
 </template>
 
 <script>
-import { isReactive } from 'vue';
-
 export default{
     props: ['page', 'isActive', 'index'],
     computed: {
