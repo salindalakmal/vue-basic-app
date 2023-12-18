@@ -94,6 +94,9 @@ export default{
             this.linkUrl = '';
             this.published = true
         }
+        // postCreate(postObj){
+        //     this.posts.push(postObj);
+        // },
     },
     watch:{
         postTitle(newTitle, oldTitle){

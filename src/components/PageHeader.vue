@@ -1,5 +1,5 @@
 <template>
-    <header class="bg-gray-100">
+    <header class="bg-gray-100 dark:bg-gray-900">
         <div class="h-16 flex items-center max-w-screen-xl mx-auto px-4 lg:px-8">
             <router-link 
                 to="/"
